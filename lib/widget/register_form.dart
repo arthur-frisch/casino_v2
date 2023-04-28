@@ -1,6 +1,7 @@
 import 'package:casino_v2/login.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -23,7 +24,7 @@ class RegisterFormState extends State<RegisterForm> {
 
   void validateForm() async {
     if (_formKey.currentState!.validate()) {
-      var response = await dio.post("https://fake-casino.shrp.dev/users", data: {
+      await dio.post("https://fake-casino.shrp.dev/users", data: {
         "email": emailController.text,
         "password": passwordController.text,
         "external_identifier": userNameController.text,
@@ -62,7 +63,7 @@ class RegisterFormState extends State<RegisterForm> {
             Column(
               children: [
                 ElevatedButton(onPressed: validateForm, child: const Text("Envoyer"),),
-                ElevatedButton(onPressed: goToLogin, child: const Text("Se connecter"),)
+                ElevatedButton(onPressed: () => context.go('/login'), child: const Text("Se connecter"),)
               ],
             )
             

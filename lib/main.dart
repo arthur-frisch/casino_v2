@@ -1,6 +1,21 @@
+import 'package:casino_v2/login.dart';
 import 'package:casino_v2/widget/register_form.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+// GoRouter configuration
+final _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const MyHomePage(),
+    ),
+    GoRoute(
+      path: '/login',
+      builder: (context, state) => const Login(),
+    ),
+  ],
+);
 void main() {
   runApp(const MyApp());
 }
@@ -10,12 +25,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
+    return MaterialApp.router(
+      routerConfig: _router,
     );
   }
 }
