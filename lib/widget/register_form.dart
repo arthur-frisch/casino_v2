@@ -33,13 +33,6 @@ class RegisterFormState extends State<RegisterForm> {
     }
   }
 
-  void goToLogin() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const Login()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Center(child: Form(
@@ -63,7 +56,6 @@ class RegisterFormState extends State<RegisterForm> {
             Column(
               children: [
                 ElevatedButton(onPressed: validateForm, child: const Text("Envoyer"),),
-                ElevatedButton(onPressed: () => context.go('/login'), child: const Text("Se connecter"),)
               ],
             )
             

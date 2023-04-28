@@ -1,3 +1,4 @@
+import 'package:casino_v2/game.dart';
 import 'package:casino_v2/login.dart';
 import 'package:casino_v2/widget/register_form.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,9 @@ final _router = GoRouter(
       path: '/login',
       builder: (context, state) => const Login(),
     ),
+    GoRoute(
+      path: '/game',
+      builder: (context, state) => const Game(), )
   ],
 );
 void main() {
@@ -40,7 +44,13 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Création du compte"),
       ),
-      body: const RegisterForm(), 
+      body: 
+        Column(children: [
+          const RegisterForm(), 
+          ElevatedButton(onPressed: () => context.go('/login'), child: const Text("Se connecter"),),
+          ElevatedButton(onPressed: () => context.go('/game'), child: const Text("Voir son token"),),
+        ],
+      )
     );
   }
 }

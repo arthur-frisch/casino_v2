@@ -43,11 +43,6 @@ class LoginFormState extends State<LoginForm> {
     }
   }
 
-  void test(TokenModel tokenModel) async {
-    Map<String, dynamic> test = await tokenModel.storageService.readAll();
-    print(test["refresh_token"]);
-  }
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -73,7 +68,6 @@ class LoginFormState extends State<LoginForm> {
                 children: [
                   ElevatedButton(onPressed: () => validateForm(model), child: const Text("Envoyer"),),
                   ElevatedButton(onPressed: () => context.go('/'), child: const Text("Créer un compte"),),
-                  ElevatedButton(onPressed: () async => test(model), child: const Text("tetstzytdfzyt"))
                 ],
               )     
             ]
